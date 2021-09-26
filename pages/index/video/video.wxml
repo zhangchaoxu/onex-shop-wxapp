@@ -1,0 +1,5 @@
+<view class="container">
+		<video unit-id="adunit-aec506d270b801e2" class="tui-video" src="https://thorui.cn/video/mall.mp4" enable-danmu danmu-btn controls autoplay>
+  </video>
+</view>
+

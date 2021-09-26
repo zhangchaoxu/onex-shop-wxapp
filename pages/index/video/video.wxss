@@ -1,0 +1,13 @@
+page,.container{
+  height: 100%;
+  background-color: #000000;
+}
+  .container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tui-video{
+  width: 100%;
+  height: 100%;
+}

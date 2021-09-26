@@ -1,0 +1,87 @@
+<view class="container">
+		<view class="tui-evaluate__box">
+			<view class="tui-flex__center">
+				<image src="/static/images/news/avatar_1.jpg" class="tui-avatar"></image>
+				<view class="tui-nickname">不许人间见白头</view>
+			</view>
+			<view class="tui-content__box">
+				<view class="tui-rate__box">
+					<tui-rate current="{{5}}" size="{{14}}"></tui-rate>
+					<text>2020-06-21</text>
+				</view>
+				<view class="tui-desc">
+					收到大大惊喜了下，真的好可爱，很温顺，给兽医检查了下，猫很正常，店家打好了防疫针，这点很赞，很满意！
+				</view>
+				<view class="tui-img__box">
+					<image src="https://thorui.cn/images/mall/cat_1.jpg" mode="aspectFill"></image>
+					<image src="https://thorui.cn/images/mall/cat_2.jpg" mode="aspectFill"></image>
+					<image src="https://thorui.cn/images/mall/cat_2.jpg" mode="aspectFill"></image>
+				</view>
+				<view class="tui-op__box tui-flex__center">
+					<view class="tui-specs">双血统；公母随机</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="tui-reply__box tui-scroll__box">
+			<tui-list-cell padding="25rpx" hover="{{false}}" lineLeft="{{false}}">
+				<view class="tui-reply__title tui-flex__center">
+					全部评论<text>（18）</text>
+				</view>
+			</tui-list-cell>
+			<tui-list-cell padding="25rpx" hover="{{false}}">
+				<view class="tui-flex__center tui-pr__30">
+					<image src="/static/images/news/avatar_1.jpg" class="tui-avatar"></image>
+					<view class="tui-nickname">卖家店小二</view>
+					<view class="tui-op-item">
+						<text>666</text>
+						<tui-icon name="agree" size="{{34}}" unit="rpx" color="#333"></tui-icon>
+					</view>
+				</view>
+				<view class="tui-content__box tui-reply__box">
+					<view class="tui-desc" bindtap="reply">
+						感谢您的评价，祝您购猫愉快！如果觉得好可以推荐给身边的朋友哦！
+					</view>
+				</view>
+			</tui-list-cell>
+			<block wx:for="{{4}}" wx:key="index">
+				<tui-list-cell padding="25rpx" hover="{{false}}">
+					<view class="tui-flex__center tui-pr__30">
+						<image src="/static/images/news/avatar_1.jpg" class="tui-avatar"></image>
+						<view class="tui-nickname">{{index%2==0?'Mocha':'AS***2'}}</view>
+						<view class="tui-op-item">
+							<text>12</text>
+							<tui-icon name="agree" size="{{34}}" unit="rpx" color="#333"></tui-icon>
+						</view>
+					</view>
+					<view class="tui-content__box tui-reply__box">
+						<view class="tui-quote__box" wx:if="{{index%2===0}}">
+							<text class="tui-color__link">AS***2：</text>
+							<text>猫咪很活泼可爱，刚开始回来有点怕人，不知道是否健康！</text>
+						</view>
+						<view class="tui-desc" bindtap="reply">
+							{{index%2===0?'发货非常快，猫咪很可爱，健康，服务非常好。':'猫咪很活泼可爱，刚开始回来有点怕人，不知道是否健康!'}}
+						</view>
+					</view>
+				</tui-list-cell>
+			</block>
+		</view>
+		<view class="tui-pullup__box">
+			<tui-divider gradual width="50%">没有更多了</tui-divider>
+		</view>
+		<view class="tui-tabbar">
+			<view class="tui-tabbar__box">
+				<view class="tui-input tui-flex__center" bindtap="reply">说点什么呗~</view>
+				<view class="tui-tabbar__right">
+					<view class="tui-op-item">
+						<text>12</text>
+						<tui-icon name="agree" size="{{34}}" unit="rpx" color="#333"></tui-icon>
+					</view>
+					<view class="tui-op-item" bindtap="scrollToReply">
+						<text>42</text>
+						<tui-icon name="message" size="{{40}}" unit="rpx" color="#333"></tui-icon>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>

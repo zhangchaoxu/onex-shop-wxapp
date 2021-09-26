@@ -1,0 +1,28 @@
+<view class="container">
+		<view class="tui-group-box tui-top tui-btm">
+			<tui-list-cell hover="{{false}}">
+				<view class="tui-group-header">
+					<view class="tui-group-title">还差<text class="tui-color-red">1人</text>即可拼团成功</view>
+				</view>
+			</tui-list-cell>
+			<view wx:for="{{12}}" wx:key="index">
+				<tui-list-cell hover="{{false}}">
+					<view class="tui-pro-item">
+						<image src="{{webURL+(index%2==0?'mine_avatar_3x.jpg':'img_not_tuxedo.png')}}" class="tui-avatar"></image>
+						<view class="tui-name">{{index%2==0?'不许人间见白头':'手可摘星辰'}}</view>
+						<view class="tui-pro__right tui-btn__box">
+							<view>
+								<tui-button type="danger" width="128rpx" height="52rpx" size="24" shadow shape="circle">去参团</tui-button>
+							</view>
+							<view class="tui-group-countdown">
+								<view class="tui-countdown-right">剩余</view>
+								<tui-countdown time="{{3800}}" scale colonColor="#EB0909" borderColor="#EB0909" color="#EB0909"></tui-countdown>
+								<view class="tui-countdown-left">结束</view>
+							</view>
+						</view>
+					</view>
+				</tui-list-cell>
+			</view>
+		</view>
+		<tui-divider gradual width="60%">没有更多了</tui-divider>
+	</view>

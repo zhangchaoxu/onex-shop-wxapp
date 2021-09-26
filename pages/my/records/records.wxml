@@ -1,0 +1,24 @@
+<view class="container">
+		<tui-tab tabs="{{tabs}}" isSticky current="{{currentTab}}" selectedColor="#E41F19" sliderBgColor="#E41F19" bindchange="change"></tui-tab>
+		<view class="tui-records__list">
+			<view wx:for="{{recordsList}}" wx:key="index" wx:if="{{currentTab==index}}">
+				<tui-list-cell hover="{{false}}" wx:for-items="{{item.data}}" wx:for-item="model" wx:for-index="subIndex" wx:key="subIndex">
+					<view class="tui-records__item">
+						<image class="tui-icon" src="/static/images/mall/wallet/{{model.icon}}"></image>
+						<view>
+							<view class="tui-title">{{model.title}}</view>
+							<view class="tui-desc">{{model.time}}</view>
+						</view>
+						<view class="tui-right__box">
+							<view class="tui-amount {{model.type==2?'tui-expend':''}}">{{model.type==2?'-':'+'}}{{model.amount}}</view>
+							<view class="tui-desc">钱包余额: {{model.balance}}</view>
+						</view>
+					</view>
+				</tui-list-cell>
+				<!--加载loading-->
+				<tui-loadmore wx:if="{{recordsList[index].loading}}" index="{{3}}" type="red"></tui-loadmore>
+				<tui-nomore wx:if="{{!recordsList[index].pullUpOn}}"></tui-nomore>
+				<!--加载loading-->
+			</view>
+		</view>
+	</view>

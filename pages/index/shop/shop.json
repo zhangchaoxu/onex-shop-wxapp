@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "店铺",
+  "navigationBarBackgroundColor": "#18293d",
+  "navigationBarTextStyle": "white",
+  "backgroundColorTop": "#18293d",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-list-cell":"/components/thorui/tui-list-cell/tui-list-cell",
+    "tui-navigation-bar":"/components/thorui/tui-navigation-bar/tui-navigation-bar",
+    "tui-button":"/components/thorui/tui-button/tui-button",
+    "tui-tabs":"/components/thorui/tui-tabs/tui-tabs",
+    "tui-icon":"/components/thorui/tui-icon/tui-icon",
+    "tui-rate":"/components/thorui/tui-rate/tui-rate",
+    "tui-divider":"/components/thorui/tui-divider/tui-divider"
+  }
+}

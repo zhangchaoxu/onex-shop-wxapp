@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "搜索",
+  "backgroundColorTop": "#fff",
+  "backgroundColorBottom": "#fff",
+  "usingComponents": {
+    "tui-tag":"/components/thorui/tui-tag/tui-tag",
+    "tui-icon":"/components/thorui/tui-icon/tui-icon",
+    "tui-actionsheet":"/components/thorui/tui-actionsheet/tui-actionsheet"
+  }
+}

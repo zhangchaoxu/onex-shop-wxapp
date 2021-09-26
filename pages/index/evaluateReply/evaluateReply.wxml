@@ -1,0 +1,6 @@
+<view class="container">
+		<textarea class="tui-textarea" placeholder="回复Mocha" maxlength="200" auto-focus></textarea>
+		<view class="tui-btn__box">
+			<tui-button type="danger" height="88rpx" shape="circle">发送</tui-button>
+		</view>
+	</view>

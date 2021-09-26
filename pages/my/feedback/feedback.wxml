@@ -1,0 +1,20 @@
+<view class="container">
+		<view class="title">问题描述</view>
+		<view class="tui-cells">
+			<textarea class="tui-textarea" placeholder="我希望加入XXXX功能，因为XX情况下，会出现XX异常" maxlength="500" placeholder-class="phcolor"
+			 bindinput="inputDesc" />
+			<view class="textarea-counter">{{parse.descNum(desc)}}/500</view>
+	    </view> 
+	    <view class="title top64">联系邮箱</view>
+	    <input class="tui-input"  placeholder-class="phcolor" placeholder="请输入邮箱" bindinput="inputEmail" maxlength="20"></input>
+	     <view class="tui-ptop">
+			 <tui-button type="danger" shadow height="88rpx" shape="circle" bindclick="submit">提交反馈</tui-button>
+	    </view>
+	</view>
+  <wxs module="parse">
+      module.exports={
+          descNum:function(desc){
+            return desc.length
+          } 
+      }
+  </wxs>

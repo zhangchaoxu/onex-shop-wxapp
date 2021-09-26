@@ -1,0 +1,3 @@
+<view class="container">
+		<tui-picture-cropper lockRatio="{{true}}" imageUrl="{{imageUrl}}" bindready="ready" bindcropper="cropper"></tui-picture-cropper>
+	</view>

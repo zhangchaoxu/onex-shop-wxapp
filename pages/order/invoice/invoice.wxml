@@ -1,0 +1,103 @@
+<view class="container">
+    <view class="tui-invoice__box">
+        <tui-list-cell hover="{{false}}">
+            <view class="tui-title tui-bold">
+                <text>发票类型</text>
+                <text class="tui-notice" bindtap="showModal">发票须知</text>
+            </view>
+            <view class="tui-attr__box">
+                <view class="tui-attr-item {{type === 1?'tui-attr-active':''}}" bindtap="switchType" data-type="1">
+                    电子普通发票
+                </view>
+                <view class="tui-attr-item {{type === 2?'tui-attr-active':''}}" bindtap="switchType" data-type="2">
+                    不开发票
+                </view>
+            </view>
+            <view class="tui-tips">ThorUI商城启用电子普通发票，与纸质普通发票具备同等法律效力，订单完成后24小时内在“我的订单”查看</view>
+        </tui-list-cell>
+        <view wx:if="{{type === 1}}">
+            <tui-list-cell hover="{{false}}">
+                <view class="tui-title tui-bold">发票抬头</view>
+                <view class="tui-attr__box tui-pbtm__0">
+                    <view class="tui-attr-item {{invoiceTitle === 1?'tui-attr-active':''}}" bindtap="switchTitle"
+                          data-type="1">个人
+                    </view>
+                    <view class="tui-attr-item {{invoiceTitle === 2?'tui-attr-active':''}}" bindtap="switchTitle"
+                          data-type="2">单位
+                    </view>
+                </view>
+                <view class="tui-form">
+                    <view class="tui-box__personal" wx:if="{{invoiceTitle === 1}}">
+                        <view class="tui-input__item">
+                            <view class="tui-input__title">个人名称名称</view>
+                            <input placeholder="请填写“个人”或您的姓名" placeholder-class="tui-placeholder"/>
+                        </view>
+                    </view>
+                    <view class="tui-box__enterprise" wx:if="{{invoiceTitle === 2}}">
+                        <view class="tui-input__item">
+                            <view class="tui-input__title">单位名称</view>
+                            <input placeholder="请填写单位名称" placeholder-class="tui-placeholder"/>
+                        </view>
+                        <view class="tui-input__item">
+                            <view class="tui-input__title">纳税人识别码</view>
+                            <input placeholder="纳税人识别号/统一社会信用代码" placeholder-class="tui-placeholder"/>
+                        </view>
+                        <view class="tui-input__item tui-between">
+                            <view class="tui-input__title">更多选填项</view>
+                            <view class="tui-more__optional" bindtap="optionalToggle">
+                                <text>展开</text>
+                                <tui-icon name="{{optional?'arrowup':'arrowdown'}}" size="{{18}}"
+                                          color="#999"></tui-icon>
+                            </view>
+                        </view>
+                        <view class="tui-optional__box" wx:if="{{optional}}">
+                            <view class="tui-input__item">
+                                <view class="tui-input__title">注册地址</view>
+                                <input placeholder="请填写注册地址" placeholder-class="tui-placeholder"/>
+                            </view>
+                            <view class="tui-input__item">
+                                <view class="tui-input__title">注册电话</view>
+                                <input type="number" placeholder="请填写注册电话" placeholder-class="tui-placeholder"/>
+                            </view>
+                            <view class="tui-input__item">
+                                <view class="tui-input__title">开户银行</view>
+                                <input placeholder="请填写单位开户银行" placeholder-class="tui-placeholder"/>
+                            </view>
+                            <view class="tui-input__item">
+                                <view class="tui-input__title">银行账号</view>
+                                <input placeholder="请填写单位银行账号" placeholder-class="tui-placeholder"/>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </tui-list-cell>
+            <tui-list-cell hover="{{false}}">
+                <view class="tui-title tui-bold">收票人信息</view>
+                <view class="tui-input__item">
+                    <view class="tui-input__title">收票人手机</view>
+                    <input placeholder="可通过手机号在发票服务平台查询" placeholder-class="tui-placeholder" value="188****0088"/>
+                </view>
+                <view class="tui-input__item">
+                    <view class="tui-input__title">收票人邮箱</view>
+                    <input placeholder="用来接收电子发票邮件,可选填" placeholder-class="tui-placeholder"/>
+                </view>
+            </tui-list-cell>
+        </view>
+    </view>
+
+    <view class="tui-btn__box">
+        <tui-button type="danger" height="88rpx" shape="circle">确定</tui-button>
+    </view>
+
+    <tui-modal show="{{modal}}" shape="circle" padding="30rpx 40rpx" custom>
+        <view class="tui-modal__title">发票须知</view>
+        <view class="tui-modal__p">1.发票金额不含优惠券、红包等优惠扣减金额；</view>
+        <view class="tui-modal__p">2.请确保发票抬头、纳税人识别号或统一社会信用代码的准确性，开票成功后无法更改；</view>
+        <view class="tui-modal__p">3.增值税普通发票的开具不填写纳税人识别号或统一社会信用代码不得作为税收凭证。</view>
+        <view class="tui-modal__btn">
+            <tui-button type="danger" shape="circle" width="280rpx" height="68rpx" size="{{26}}" bindclick="hideModal">
+                我知道了
+            </tui-button>
+        </view>
+    </tui-modal>
+</view>

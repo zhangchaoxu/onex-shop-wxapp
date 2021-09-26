@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "商品评价",
+  "usingComponents": {
+    "tui-divider":"/components/thorui/tui-divider/tui-divider",
+    "tui-icon":"/components/thorui/tui-icon/tui-icon",
+    "tui-rate":"/components/thorui/tui-rate/tui-rate"
+  }
+}

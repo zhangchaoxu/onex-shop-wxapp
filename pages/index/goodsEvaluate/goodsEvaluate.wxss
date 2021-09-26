@@ -1,0 +1,144 @@
+.tui-header {
+  font-size: 24rpx;
+  color: #999;
+  padding: 16rpx 30rpx;
+}
+
+.tui-header text {
+  font-weight: bold;
+  padding-left: 12rpx;
+  color: #333;
+}
+
+.tui-attr-box {
+  width: 100%;
+  padding: 24rpx 25rpx 0;
+  box-sizing: border-box;
+  font-size: 0;
+  background-color: #fff;
+  border-radius: 24rpx;
+}
+
+.tui-attr-item {
+  max-width: 100%;
+  min-width: 128rpx;
+  height: 64rpx;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fcedea;
+  padding: 0 26rpx;
+  box-sizing: border-box;
+  border-radius: 32rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+  border: 1rpx solid #fcedea;
+}
+
+.tui-attr-active {
+  color: #e41f19;
+  border: 1rpx solid #e41f19;
+}
+
+.tui-attr-item text {
+  font-weight: bold;
+  padding-left: 12rpx;
+}
+
+.tui-evaluate__box {
+  width: 100%;
+  padding: 25rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: 0 3rpx 20rpx rgba(183, 183, 183, 0.1);
+  overflow: hidden;
+  margin-top: 20rpx;
+  border-radius: 24rpx;
+}
+
+.tui-flex__center {
+  display: flex;
+  align-items: center;
+}
+
+.tui-avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+}
+
+.tui-nickname {
+  font-size: 28rpx;
+  padding-left: 12rpx;
+}
+
+.tui-content__box {
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.tui-rate__box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+  padding: 24rpx 0;
+}
+
+.tui-desc {
+  font-size: 28rpx;
+  word-break: break-all;
+  text-align: justify;
+}
+
+.tui-img__box {
+  width: 100%;
+  font-size: 0;
+  padding-top: 4rpx;
+}
+
+.tui-img__box image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 12rpx;
+  margin-top: 12rpx;
+}
+
+.tui-image {
+  width: 400rpx !important;
+  height: auto;
+}
+
+.tui-op__box {
+  width: 100%;
+  padding-top: 24rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  justify-content: space-between;
+}
+
+.tui-op-item {
+  display: flex;
+  align-items: center;
+  margin-left: 40rpx;
+}
+
+.tui-op-item text {
+  padding-right: 6rpx;
+}
+
+.tui-specs {
+  font-size: 24rpx;
+  color: #999;
+  font-weight: 400;
+  word-break: break-all;
+}
+
+.tui-color-red {
+  color: #EB0909;
+}

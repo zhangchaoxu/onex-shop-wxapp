@@ -1,0 +1,13 @@
+{
+  "backgroundColorTop": "#F7F7F7",
+  "backgroundColorBottom": "#F7F7F7",
+  "navigationBarTitleText": "OneX商城",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+   "usingComponents": {
+    "tui-icon":"/components/thorui/tui-icon/tui-icon",
+    "tui-list-cell":"/components/thorui/tui-list-cell/tui-list-cell",
+    "tui-loadmore":"/components/thorui/tui-loadmore/tui-loadmore",
+    "tui-countdown":"/components/thorui/tui-countdown/tui-countdown"
+   }
+}

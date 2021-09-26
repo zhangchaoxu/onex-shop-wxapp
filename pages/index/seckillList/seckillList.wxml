@@ -1,0 +1,60 @@
+<view class="container">
+		<view class="tui-bg__box"><image src="{{webURL}}bg_seckill.png" class="tui-bg__img" mode="widthFix" style="opacity:{{opacity}}"></image></view>
+		<view class="tui-header__bg">
+			<image src="{{webURL}}bg_seckill.png" class="tui-bg__img" mode="widthFix"></image>
+			<scroll-view class="tui-time-slot" scroll-x>
+				<view class="tui-time__list {{timeSlot.length < 6?'tui-flex__between':''}}">
+					<view
+						class="tui-time__item {{timeSlot.length < 6 ? 'tui-flex__1' : 'tui-width__min'}} {{index == currentTab ? 'tui-time__active' : ''}}"
+						wx:for="{{timeSlot}}"
+						wx:key="index"
+						bindtap="changeTabs"
+            data-index="{{index}}"
+					>
+						<view class="tui-time">{{ item.time }}</view>
+						<view class="tui-status">{{ item.statusText }}</view>
+					</view>
+				</view>
+			</scroll-view>
+		</view>
+		<view class="tui-body">
+			<view class="tui-status__box">
+				<view class="tui-full__width">
+					<tui-divider gradual width="80%" backgroundColor="#fff" height="{{34}}">
+						<view class="tui-divider__status">
+							<image src="{{webURL}}img_seckill.png" mode="widthFix"></image>
+							<text class="tui-color__red">{{ time }}</text>
+							<text>{{parse.getStatusText(status) }}</text>
+						</view>
+					</tui-divider>
+				</view>
+				<view class="tui-countdown__box" wx:if="{{status > 1}}">
+					<text>距离{{status == 2 ? '结束还剩' : '开始还有' }}</text>
+					<tui-countdown time="{{3880}}" backgroundColor="#4D4D4D" color="#fff"></tui-countdown>
+				</view>
+			</view>
+
+			<view class="tui-list__goods">
+				<view class="tui-goods__left {{status == 3?'tui-full__width':''}}">
+					<block wx:for="{{productList}}" wx:key="index">
+						<t-goods-item wx:if="{{index % 2 == 0 || status == 3}}" item="{{item}}" status="{{status}}" isList="{{status == 3}}"></t-goods-item>
+					</block>
+				</view>
+				<view class="tui-goods__right" wx:if="{{status !== 3}}">
+					<block wx:for="{{productList}}" wx:key="index">
+						<t-goods-item wx:if="{{index % 2 !== 0}}" item="{{item}}" status="{{status}}" isList="{{status == 3}}"></t-goods-item>
+					</block>
+				</view>
+			</view>
+		</view>
+	</view>
+
+<wxs module="parse">
+	module.exports = {
+   getStatusText:function(status) {
+		status= status || 1
+			var text = ['活动已结束', '正在疯抢', '即将开抢'][status - 1];
+			return text;
+		}
+	}
+</wxs>

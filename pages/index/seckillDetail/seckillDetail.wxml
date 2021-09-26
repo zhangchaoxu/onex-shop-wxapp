@@ -1,0 +1,360 @@
+<view class="container">
+		<!--header-->
+		<view class="tui-header-box" style="height: {{height}}px; background:rgba(255,255,255,{{opcity}})">
+			<view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">商品详情</view>
+			<view class="tui-header-icon" style="margin-top:{{top}}px">
+				<view class="tui-icon-box" style="background-color:rgba(0, 0, 0,{{iconOpcity}})" bindtap="back">
+					<tui-icon name="arrowleft" size="{{30}}" color="{{opcity >= 1 ? '#000' : '#fff'}}"></tui-icon>
+				</view>
+
+				<view class="tui-icon-box tui-icon-ml" style="background-color:rgba(0, 0, 0,{{iconOpcity}})" catchtap="openMenu">
+					<tui-icon name="more-fill" size="{{20}}" color="{{opcity >= 1 ? '#000' : '#fff'}}"></tui-icon>
+					<tui-badge type="red" scaleRatio="{{0.8}}" absolute top="0" right="-4rpx">5</tui-badge>
+				</view>
+
+			</view>
+		</view>
+		<!--header-->
+
+		<!--banner-->
+		<view class="tui-banner-swiper">
+			<swiper autoplay="{{autoplay}}" interval="{{5000}}" duration="{{150}}" circular="{{true}}" style="height:{{scrollH}}px"
+			 bindchange="bannerChange">
+				<block wx:for="{{banner}}" wx:key="index">
+				 <swiper-item wx:if="{{index==0}}">
+					<video unit-id="adunit-aec506d270b801e2" bindplay="play" bindpause="pause" class="tui-video" style="height:{{scrollH}}px"  src="{{item}}"  controls autoplay object-fit="fill"> </video>
+					</swiper-item>
+					<swiper-item wx:else data-index="{{index}}" catchtap="previewImage">
+						<image src="{{item}}" class="tui-slide-image" style="height:{{scrollH}}px" />
+					</swiper-item>
+				</block>
+			</swiper>
+			<!-- <view class="tui-video__box" catchtap="play">
+				<image src="https://www.thorui.cn/images/mall/img_video_3x.png" mode="widthFix"></image>
+				<view>00′30″</view>
+			</view> -->
+			<view class="tui-banner-tag" wx:if="{{bannerIndex>0}}">
+				<tui-tag padding="12rpx 18rpx" type="translucent" shape="circleLeft" scaleMultiple="{{0.82}}" originRight>{{ bannerIndex + 1 }}/{{ banner.length }}</tui-tag>
+			</view>
+		</view>
+
+		<!--banner-->
+
+		<view class="tui-pro-detail">
+			<view class="tui-product-title tui-border-radius">
+				<view class="tui-price__box">
+					<view class="tui-pro-pricebox tui-padding">
+						<view class="tui-pro-price">
+							<view>
+								<text>￥</text>
+								<text class="tui-price">49</text>
+								<text>.00</text>
+							</view>
+							<view class="tui-original-price tui-white__gray">￥199.00</view>
+						</view>
+						<view class="tui-sold tui-white__gray">
+							<text>已抢1000件</text>
+							<tui-tag wx:if="{{status==2}}" type="white" plain size="24rpx" padding="8rpx" scaleMultiple="{{0.94}}">限时秒杀</tui-tag>
+						</view>
+					</view>
+					<view class="tui-right__box">
+						<image wx:if="{{status!=2}}" src="https://www.thorui.cn/images/mall/img_seckillgood_seckill.png" class="tui-seckill__img"
+						 mode="widthFix"></image>
+						<tui-button wx:if="{{status!=2}}" type="danger" disabled shape="circle" width="140rpx" height="42rpx" size="{{24}}">{{status==1?'活动已结束':'即将开抢'}}</tui-button>
+						<text wx:if="{{status==2}}" class="tui-color-red">距结束还剩:</text>
+						<tui-countdown wx:if="{{status==2}}" width="{{28}}" height="{{28}}" time="{{3880}}" backgroundColor="#EB0909" borderColor="#EB0909"
+						 colonColor="#EB0909" color="#fff"></tui-countdown>
+					</view>
+				</view>
+				<view class="tui-pro-titbox">
+					<view class="tui-pro-title">谈判官明星同款耳坠韩国气质简约显脸瘦的耳环女百搭个性长款耳钉 个性水滴耳环【A2】</view>
+					<view class="tui-share-position" bindtap="showSharePopup">
+						<tui-tag type="gray" shape="circleLeft" padding="12rpx 16rpx">
+							<view class="tui-share-box">
+								<tui-icon name="partake" color="#999" size="{{15}}"></tui-icon>
+								<text class="tui-share-text tui-gray tui-size">分享</text>
+							</view>
+						</tui-tag>
+					</view>
+				</view>
+				<view class="tui-padding">
+					<view class="tui-sub-title tui-size tui-gray">此商品将于2019-06-28,10点结束闪购特卖，时尚美饰联合专场</view>
+					<view class="tui-sale-info tui-size tui-gray">
+						<view>快递：0.00</view>
+						<view>月销2000</view>
+						<view>浙江杭州</view>
+					</view>
+				</view>
+			</view>
+
+			<view class="tui-discount-box tui-radius-all tui-mtop">
+				<view class="tui-list-cell" bindtap="coupon">
+					<view class="tui-bold tui-cell-title">领券</view>
+					<view class="tui-flex-center">
+						<tui-tag type="red" shape="circle" padding="12rpx 24rpx" size="24rpx">满99减8</tui-tag>
+						<tui-tag margin="0 0 0 20rpx" type="red" padding="12rpx 24rpx" size="24rpx" shape="circle">满59减5</tui-tag>
+					</view>
+					<view class="tui-ml-auto">
+						<tui-icon name="more-fill" size="{{20}}" color="#666"></tui-icon>
+					</view>
+				</view>
+
+				<view class="tui-list-cell tui-last" bindtap="showPopup">
+					<view class="tui-bold tui-cell-title">促销</view>
+					<view>
+						<view class="tui-promotion-box">
+							<tui-tag originLeft padding="12rpx 24rpx" scaleMultiple="{{0.8}}" shape="circle" type="red" plain>多买优惠</tui-tag>
+							<text>满1件，立减最低1件商品价格，包邮（限中国内地）</text>
+						</view>
+						<view class="tui-promotion-box">
+							<tui-tag originLeft padding="12rpx 24rpx" scaleMultiple="{{0.8}}" shape="circle" type="red" plain>满额返券</tui-tag>
+							<text>满2件，立减最低2件商品价格，包邮（限中国内地）</text>
+						</view>
+						<view class="tui-promotion-box">
+							<tui-tag originLeft padding="12rpx 24rpx" scaleMultiple="{{0.8}}" shape="circle" type="red" plain>特别赠品</tui-tag>
+							<text>满3件，立减最低3件商品价格，包邮（限中国内地）</text>
+						</view>
+					</view>
+					<view class="tui-right">
+						<tui-icon name="more-fill" size="{{20}}" color="#666"></tui-icon>
+					</view>
+				</view>
+			</view>
+
+			<view class="tui-basic-info tui-mtop tui-radius-all">
+				<view class="tui-list-cell" bindtap="showPopup">
+					<view class="tui-bold tui-cell-title">已选</view>
+					<view class="tui-selected-box">个性水滴耳环【A2】,1个，可选服务</view>
+					<view class="tui-ml-auto">
+						<tui-icon name="more-fill" size="{{20}}" color="#666"></tui-icon>
+					</view>
+				</view>
+				<view class="tui-list-cell" bindtap="showPopup">
+					<view class="tui-bold tui-cell-title">送至</view>
+					<view class="tui-addr-box">
+						<view class="tui-addr-item">北京朝阳区三环到四环之间</view>
+						<view class="tui-addr-item">今日23:59前完成下单，预计6月28日23:30前发货，7月1日24:00前送达</view>
+					</view>
+					<view class="tui-right">
+						<tui-icon name="more-fill" size="{{20}}" color="#666"></tui-icon>
+					</view>
+				</view>
+				<view class="tui-list-cell tui-last">
+					<view class="tui-bold tui-cell-title">运费</view>
+					<view class="tui-selected-box">在线支付免运费</view>
+				</view>
+				<view class="tui-guarantee">
+					<view class="tui-guarantee-item">
+						<tui-icon name="circle-selected" size="{{14}}" color="#999"></tui-icon>
+						<text class="tui-pl">可配送海外</text>
+					</view>
+					<view class="tui-guarantee-item">
+						<tui-icon name="circle-selected" size="{{14}}" color="#999"></tui-icon>
+						<text class="tui-pl">店铺发货&售后</text>
+					</view>
+					<view class="tui-guarantee-item">
+						<tui-icon name="circle-selected" size="{{14}}" color="#999"></tui-icon>
+						<text class="tui-pl">7天无理由退货</text>
+					</view>
+					<view class="tui-guarantee-item">
+						<tui-icon name="circle-selected" size="{{14}}" color="#999"></tui-icon>
+						<text class="tui-pl">闪电退款</text>
+					</view>
+					<view class="tui-guarantee-item">
+						<tui-icon name="circle-selected" size="{{14}}" color="#999"></tui-icon>
+						<text class="tui-pl">极速审核</text>
+					</view>
+				</view>
+			</view>
+
+			<view class="tui-cmt-box tui-mtop tui-radius-all">
+				<view class="tui-list-cell tui-last tui-between">
+					<view class="tui-bold tui-cell-title">评价</view>
+					<view class="tui-flex-center" bindtap="evaluate">
+						<text class="tui-cmt-all">查看全部</text>
+						<tui-icon name="more-fill" size="{{20}}" color="#ff201f"></tui-icon>
+					</view>
+				</view>
+
+				<view class="tui-cmt-content tui-padding">
+					<view class="tui-cmt-user">
+						<image src="/static/images/news/avatar_2.jpg" class="tui-acatar"></image>
+						<view>z***9</view>
+					</view>
+					<view class="tui-cmt">物流很快，很适合我的风格❤</view>
+					<view class="tui-attr">颜色：叠层钛钢流苏耳环（A74）</view>
+				</view>
+
+				<view class="tui-cmt-btn">
+					<tui-button width="240rpx" height="64rpx" size="{{24}}" type="black" plain shape="circle" bindclick="evaluate">查看全部评价</tui-button>
+				</view>
+			</view>
+
+			<view class="tui-nomore-box">
+				<tui-nomore text="宝贝详情" backgroundColor="#f7f7f7"></tui-nomore>
+			</view>
+			<view class="tui-product-img tui-radius-all">
+				<image src="https://www.thorui.cn/img/detail/{{index + 1}}.jpg" wx:for="{{20}}" wx:for-item="img" wx:key="index"
+				 mode="widthFix"></image>
+			</view>
+			<tui-nomore text="已经到最底了" backgroundColor="#f7f7f7"></tui-nomore>
+			<view class="tui-safearea-bottom"></view>
+		</view>
+
+		<!--底部操作栏-->
+		<view class="tui-operation">
+			<view class="tui-operation-left tui-col-5">
+				<view class="tui-operation-item" hover-class="tui-opcity" hover-stay-time="150">
+					<tui-icon name="kefu" size="{{22}}" color="#333"></tui-icon>
+					<view class="tui-operation-text tui-scale-small">客服</view>
+				</view>
+				<view class="tui-operation-item" hover-class="tui-opcity" hover-stay-time="150" bindtap="shop">
+					<tui-icon name="shop" size="{{22}}" color="#333"></tui-icon>
+					<view class="tui-operation-text tui-scale-small">店铺</view>
+				</view>
+				<view class="tui-operation-item" hover-class="tui-opcity" hover-stay-time="150">
+					<tui-icon name="cart" size="{{22}}" color="#333"></tui-icon>
+					<view class="tui-operation-text tui-scale-small">购物车</view>
+					<tui-badge type="red" absolute scaleRatio="{{0.8}}" right="10rpx" top="-4rpx">8</tui-badge>
+				</view>
+			</view>
+			<view class="tui-operation-right tui-right-flex tui-col-7 tui-btnbox-4">
+				<view class="tui-flex-1" wx:if="{{status==3}}">
+					<tui-button height="68rpx" size="{{26}}" type="{{remind==1?'warning':'green'}}" shape="circle" bindclick="btnRemind">
+						<view class="tui-right-flex">
+							<image wx:if="{{remind==1}}" src="https://www.thorui.cn/images/mall/img_clock.png" class="tui-img__clock"></image>
+							<text>{{remind==1?'08:00 预约提醒':'08:00开抢, 已设提醒'}}</text>
+						</view>
+					</tui-button>
+				</view>
+				<view class="tui-flex-1" wx:if="{{status==1}}">
+					<tui-button height="68rpx" size="{{26}}" type="danger" shape="circle" disabled>活动已结束</tui-button>
+				</view>
+				<view class="tui-flex-1" wx:if="{{status==2}}">
+					<tui-button height="68rpx" size="{{26}}" type="warning" shape="circle" bindclick="showPopup">加入购物车</tui-button>
+				</view>
+				<view class="tui-flex-1" wx:if="{{status==2}}">
+					<tui-button height="68rpx" size="{{26}}" type="danger" shape="circle" bindclick="submit">立即抢购</tui-button>
+				</view>
+			</view>
+		</view>
+
+		<!--底部操作栏-->
+
+		<!--顶部下拉菜单-->
+		<tui-top-dropdown backgroundColor="rgba(76, 76, 76, 0.95)" show="{{menuShow}}" height="{{0}}" bindclose="closeMenu">
+			<view class="tui-menu-box tui-padding tui-ptop">
+				<view class="tui-menu-header" style="padding-top:{{top}}px">功能直达</view>
+				<view class="tui-menu-itembox">
+					<block wx:for="{{topMenu}}" wx:key="index">
+						<view class="tui-menu-item" hover-class="tui-opcity" hover-stay-time="150" bindtap="btnTopMenu" data-index="{{index}}">
+							<view class="tui-badge-box">
+								<tui-icon name="{{item.icon}}" color="#fff" size="{{item.size}}"></tui-icon>
+								<tui-badge type="red" scaleRatio="{{0.8}}" absolute right="-8rpx" wx:if="{{item.badge}}">{{ item.badge }}</tui-badge>
+							</view>
+							<view class="tui-menu-text">{{ item.text }}</view>
+						</view>
+					</block>
+				</view>
+				<view class="tui-icon-up_box">
+					<tui-icon name="up" color="#fff" size="{{26}}" bindclick="closeMenu"></tui-icon>
+				</view>
+			</view>
+		</tui-top-dropdown>
+		<!---顶部下拉菜单-->
+
+		<!--底部选择层-->
+		<tui-bottom-popup show="{{popupShow}}" bindclose="hidePopup">
+			<view class="tui-popup-box">
+				<view class="tui-product-box tui-padding">
+					<image src="https://www.thorui.cn/img/product/11.jpg" class="tui-popup-img"></image>
+					<view class="tui-popup-price">
+						<view class="tui-amount tui-bold">￥49.00</view>
+						<view class="tui-number">编号:4373299399393</view>
+					</view>
+				</view>
+				<scroll-view scroll-y class="tui-popup-scroll">
+					<view class="tui-scrollview-box">
+						<view class="tui-bold tui-attr-title">颜色</view>
+						<view class="tui-attr-box">
+							<view class="tui-attr-item">五角星钻耳线</view>
+							<view class="tui-attr-item">米子珍珠耳线</view>
+							<view class="tui-attr-item">花朵镶钻耳线</view>
+							<view class="tui-attr-item">扇子珍珠流苏耳线</view>
+							<view class="tui-attr-item tui-attr-active">扇子珍珠流苏耳线耳线</view>
+						</view>
+
+						<view class="tui-number-box tui-bold tui-attr-title">
+							<view class="tui-attr-title">数量</view>
+							<tui-numberbox max="{{99}}" min="{{1}}" value="{{value}}" bindchange="change"></tui-numberbox>
+						</view>
+						<view class="tui-bold tui-attr-title">尺寸</view>
+						<view class="tui-attr-box">
+							<view class="tui-attr-item">5cm</view>
+							<view class="tui-attr-item">8cm</view>
+							<view class="tui-attr-item">12cm</view>
+							<view class="tui-attr-item">16cm</view>
+							<view class="tui-attr-item tui-attr-active">18cm</view>
+						</view>
+
+						<view class="tui-bold tui-attr-title">保障服务</view>
+						<view class="tui-attr-box">
+							<view class="tui-attr-item">半年掉钻保 ￥4.0</view>
+						</view>
+
+						<view class="tui-bold tui-attr-title">只换不修</view>
+						<view class="tui-attr-box">
+							<view class="tui-attr-item">三月意外换￥2.0</view>
+							<view class="tui-attr-item">半年意外换￥2.0</view>
+						</view>
+					</view>
+				</scroll-view>
+				<view class="tui-operation tui-operation-right tui-right-flex tui-popup-btn">
+					<view class="tui-flex-1">
+						<tui-button height="72rpx" size="{{28}}" type="warning" shape="circle" bindclick="hidePopup">加入购物车</tui-button>
+					</view>
+					<view class="tui-flex-1">
+						<tui-button height="72rpx" size="{{28}}" type="danger" shape="circle" bindclick="submit">立即抢购</tui-button>
+					</view>
+				</view>
+				<view class="tui-right">
+					<tui-icon name="close-fill" color="#999" size="{{20}}" bindclick="hidePopup"></tui-icon>
+				</view>
+			</view>
+		</tui-bottom-popup>
+		<!--底部选择层-->
+
+			<!--底部分享弹层-->
+		<tui-bottom-popup show="{{sharePopup}}" bindclose="hideSharePopup">
+			<view class="tui-share__box">
+				<view class="tui-share__header">
+					<text>分享</text>
+					<view class="tui-close__box" bindtap="hideSharePopup">
+						<tui-icon name="shut" size="{{20}}" color="#C9C9C9"></tui-icon>
+					</view>
+				</view>
+				<view class="tui-share__list">
+					<button open-type="share" class="tui-share-btn" bindtap="onShare">
+						<view class="tui-share__item">
+							<image src="/static/images/mall/icon_popup_share.png"></image>
+							<view class="tui-share__text">分享给好友</view>
+						</view>
+					</button>
+					<view class="tui-share__item" bindtap="createPoster">
+						<image src="/static/images/mall/icon_popup_poster.png"></image>
+						<view class="tui-share__text">生成分享海报</view>
+					</view>
+				</view>
+			</view>
+		</tui-bottom-popup>
+		<!--底部分享弹层-->
+		<canvas style="width: {{winWidth}}px; height: {{winHeight}}px" canvas-id="posterId" id="posterId" class="tui-poster__canvas"></canvas>
+		<tui-modal custom show="{{modalShow}}" backgroundColor="transparent" padding="0" bindcancel="hideShareModal">
+			<view class="tui-poster__box" style="margin-top:{{height}}px">
+				<image src="/static/images/mall/icon_popup_closed.png" class="tui-close__img" catchtap="hideShareModal"></image>
+				<image src="{{posterImg}}" wx:if="{{posterImg}}" class="tui-poster__img"></image>
+				<tui-button type="danger" width="460rpx" height="80rpx" shape="circle" bindclick="savePic">保存图片</tui-button>
+				<view class="tui-share__tips">保存图片到手机相册后，将图片分享到您的圈子</view>
+			</view>
+		</tui-modal>
+	</view>

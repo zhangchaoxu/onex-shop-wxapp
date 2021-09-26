@@ -1,0 +1,47 @@
+<view class="container">
+		<view class="tui-header">商品好评度 <text>98%</text></view>
+		<view class="tui-attr-box">
+			<view class="tui-attr-item tui-attr-active">全部 <text>90+</text></view>
+			<view class="tui-attr-item">最新</view>
+			<view class="tui-attr-item">好评<text>80+</text></view>
+			<view class="tui-attr-item">差评<text>1</text></view>
+			<view class="tui-attr-item">有图<text>8</text></view>
+			<view class="tui-attr-item">追加评价<text>8</text></view>
+		</view>
+		<view class="tui-evaluate__box" wx:for="{{evaluateList}}" wx:key="index">
+			<view class="tui-flex__center">
+				<image src="/static/images/news/avatar_1.jpg" class="tui-avatar"></image>
+				<view class="tui-nickname">zmh06721</view>
+			</view>
+			<view class="tui-content__box">
+				<view class="tui-rate__box">
+					<tui-rate current="{{item.star}}" size="{{14}}"></tui-rate>
+					<text>2020-06-21</text>
+				</view>
+				<view class="tui-desc">
+					收到大大惊喜了下，真的好可爱，很温顺，给兽医检查了下，猫很正常，店家打好了防疫针，这点很赞，很满意！
+				</view>
+				<view class="tui-img__box" wx:if="{{item.imgs && item.imgs.length>0}}">
+					<block wx:for="{{item.imgs}}"  wx:for-item="src" wx:for-index="subIndex" :key="subIndex">
+						<image catchtap="previewImage" data-index="{{index}}" data-current="{{subIndex}}" class="{{item.imgs.length===1?'tui-image':''}}" src="{{webURL+src}}"
+						 mode="{{item.imgs.length===1?'widthFix':'aspectFill'}}"></image>
+					</block>
+				</view>
+				<view class="tui-op__box tui-flex__center">
+					<view class="tui-specs">双血统；公母随机</view>
+					<view class="tui-flex__center">
+						<view class="tui-op-item">
+							<text class="{{item.zan?'tui-color-red':''}}">12</text>
+							<tui-icon name="{{item.zan?'agree-fill':'agree'}}" size="{{34}}" unit="rpx" color="{{item.zan?'#EB0909':'#333'}}"></tui-icon>
+						</view>
+						<view class="tui-op-item" bindtap="evaluateDetail">
+							<text>1</text>
+							<tui-icon name="message" size="{{40}}" unit="rpx" color="#333"></tui-icon>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<tui-divider gradual width="50%">没有更多了</tui-divider>
+	</view>

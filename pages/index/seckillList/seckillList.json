@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "限时秒杀",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "t-goods-item":"/components/views/t-goods-item/t-goods-item",
+    "tui-divider":"/components/thorui/tui-divider/tui-divider",
+    "tui-countdown":"/components/thorui/tui-countdown/tui-countdown"
+  }
+}

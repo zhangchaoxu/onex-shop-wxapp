@@ -1,0 +1,257 @@
+<view class="container">
+		<tui-navigation-bar isCustom isOpacity="{{false}}" backgroundColor="#18293d" bindinit="initHeader">
+			<view class="tui-header" style="height:{{height - statusBarHeight}}px">
+				<view style="width:{{width}}px" class="tui-flex__center">
+					<view class="tui-back__box" bindtap="back"><tui-icon name="arrowleft" color="#fff"></tui-icon></view>
+					<view class="tui-searchbox tui-search-mr" bindtap="search">
+						<icon type="search" size="13" color="#fff"></icon>
+						<text class="tui-search-text">搜索本店</text>
+					</view>
+				</view>
+			</view>
+		</tui-navigation-bar>
+		<view class="tui-shop__info" style="padding-top:{{height + 5}}px">
+			<image src="/static/images/index/logo.png" class="tui-logo" bindtap="shop"></image>
+			<view class="tui-shop__desc" bindtap="shop">
+				<view class="tui-shop__name">
+					<text>ThorUI宠物生活专营店</text>
+					<tui-icon name="arrowright" color="#fff" size="{{24}}" unit="rpx"></tui-icon>
+				</view>
+				<view class="tui-shop__rate">
+					<view class="tui-rate__box"><tui-rate current="{{5}}" score="{{0.6}}" disabled size="{{12}}"></tui-rate></view>
+					<view class="tui-shop__follow">2.3万人关注</view>
+				</view>
+			</view>
+			<view class="tui-btn__follow">
+				<tui-button size="{{24}}" width="116rpx" height="48rpx" shape="circle" type="danger">
+					<tui-icon name="like" color="#fff" size="{{24}}" unit="rpx"></tui-icon>
+					<text class="tui-follow__text">关注</text>
+				</tui-button>
+				<!-- <tui-button size="{{24}}" width="116rpx" height="48rpx" shape="circle" type="white" disabled>已关注</tui-button> -->
+			</view>
+		</view>
+		<tui-tabs
+			bindchange="change"
+			currentTab="{{current}}"
+			tabs="{{tabs}}"
+			itemWidth="20%"
+			backgroundColor="#18293d"
+			color="rgba(255,255,255,.7)"
+			selectedColor="#fff"
+			sliderBgColor="#fff"
+			bottom="8rpx"
+			unlined
+			size="{{30}}"
+			sliderWidth="{{60}}"
+		></tui-tabs>
+		<!--=======推荐 start=======-->
+		<view class="tui-items__1 tui-padding" wx:if="{{current == 0}}">
+			<view class="tui-ranking__header">
+				<view class="tui-ranking__title">排行榜</view>
+				<view class="tui-ranking__tabs">
+					<view class="{{rankingTab === 0?'tui-ranking__active':''}}" bindtap="rankingChangeTab" data-index="0">销量排行</view>
+					<view class="{{rankingTab === 1?'tui-ranking__active':''}}" bindtap="rankingChangeTab" data-index="1">收藏排行</view>
+				</view>
+			</view>
+			<block wx:for="{{rankingList}}" wx:for-item="model" wx:for-index="key" wx:key="key">
+				<view class="tui-ranking__list {{model.list.length === 2?'tui-justify__start':''}}" wx:if="{{rankingTab === key}}">
+					<view class="tui-ranking__item {{model.list.length === 2?'tui-item-mr__16':''}}" bindtap="detail" wx:for="{{model.list}}" wx:key="index">
+						<image src="{{item.img}}"></image>
+						<view class="tui-ranking__gtitle">{{ item.title }}</view>
+						<view class="tui-ranking__sub">{{ key == 0 ? item.sales : item.collection }}人{{ key == 0 ? '购买' : '收藏' }}</view>
+					</view>
+				</view>
+			</block>
+			<view class="tui-recommend__title">单品推荐</view>
+			<view class="tui-recommend__item" bindtap="detail" wx:for="{{12}}" wx:key="index">
+				<image src="/static/images/mall/product/{{index % 2 == 0 ? 6 : 5}}.jpg" class="tui-rg__img"></image>
+				<view class="tui-recommend__right">
+					<view class="tui-rg__title">
+						{{ index % 2 == 0 ? '柔色尽情丝柔口红唇膏女士不易掉色保湿滋润防水 珊瑚红' : '百草味 肉干肉脯 休闲零食 靖江精制猪肉脯200g/袋' }}
+					</view>
+					<view class="tui-rg__attr">{{ index % 2 == 0 ? '防水系列 红色' : '零食 200g/袋' }}</view>
+					<view class="tui-rg__interested">
+						<tui-icon name="like" size="{{26}}" unit="rpx" color="#EB0909"></tui-icon>
+						<text class="tui-interested__num">2020个客官感兴趣</text>
+					</view>
+					<view class="tui-rg__imgbox">
+						<image src="/static/images/mall/product/{{index % 2 == 0 ? 6 : 5}}.jpg"></image>
+						<image src="/static/images/mall/product/{{index % 2 == 0 ? 6 : 5}}.jpg"></image>
+            <image src="/static/images/mall/product/{{index % 2 == 0 ? 6 : 5}}.jpg"></image>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!--=======推荐 end=======-->
+
+		<!--=======商品=======-->
+		<view class="tui-items__2" wx:if="{{current == 1}}">
+			<view class="tui-header__screen">
+				<view class="tui-screen__item {{screenType == 1?'tui-screen__active':''}}" bindtap="screen" data-index="1">综合</view>
+				<view class="tui-screen__item {{screenType == 2?'tui-screen__active':''}}" bindtap="screen" data-index="2">销量</view>
+				<view class="tui-screen__item {{screenType == 3?'tui-screen__active':''}}" bindtap="screen" data-index="3">
+					<text>价格</text>
+					<view class="tui-screen__price">
+						<view class="tui-price__asc">
+							<tui-icon name="turningup" color="{{screenType == 3 && sortWay == 'asc' ? '#E32424' : '#000'}}" :size="24" unit="rpx"></tui-icon>
+						</view>
+						<view class="tui-price__desc">
+							<tui-icon name="turningdown" color="{{screenType == 3 && sortWay == 'desc' ? '#E32424' : '#000'}}" :size="24" unit="rpx"></tui-icon>
+						</view>
+					</view>
+				</view>
+				<view class="tui-screen__item" bindtap="screen" data-index="4">
+					<tui-icon name="{{isList ? 'manage' : 'listview'}}" size="{{isList ? 44 : 34}}" unit="rpx" bold="{{isList ? false : true}}" color="#333"></tui-icon>
+				</view>
+			</view>
+
+			<!--list-->
+			<view class="tui-product-list tui-padding">
+				<view class="tui-product-container">
+					<block wx:for="{{productList}}" wx:key="index" wx:if="{{(index + 1) % 2 != 0 || isList}}">
+						<!--商品列表-->
+						<view class="tui-pro-item {{isList ? 'tui-flex-list' : ''}}" hover-class="tui-hover" hover-start-time="150" bindtap="detail">
+							<image src="/static/images/mall/product/{{item.img}}.jpg" class="tui-pro-img {{isList ? 'tui-proimg-list' : ''}}" mode="widthFix" />
+							<view class="tui-pro-content">
+								<view class="tui-pro-tit">{{ item.name }}</view>
+								<view>
+									<view class="tui-pro-price">
+										<text class="tui-sale-price">￥{{ item.sale }}</text>
+										<text class="tui-factory-price">￥{{ item.factory }}</text>
+									</view>
+									<view class="tui-pro-pay">{{ item.payNum }}人付款</view>
+								</view>
+							</view>
+						</view>
+						<!--商品列表-->
+					</block>
+				</view>
+				<view class="tui-product-container" wx:if="{{!isList}}">
+					<block wx:for="{{productList}}" wx:key="index" wx:if="{{(index + 1) % 2 == 0}}">
+						<!--商品列表-->
+						<view class="tui-pro-item {{isList ? 'tui-flex-list' : ''}}" hover-class="tui-hover" hover-start-time="150" bindtap="detail">
+							<image src="/static/images/mall/product/{{item.img}}.jpg" class="tui-pro-img {{isList ? 'tui-proimg-list' : ''}}" mode="widthFix" />
+							<view class="tui-pro-content">
+								<view class="tui-pro-tit">{{ item.name }}</view>
+								<view>
+									<view class="tui-pro-price">
+										<text class="tui-sale-price">￥{{ item.sale }}</text>
+										<text class="tui-factory-price">￥{{ item.factory }}</text>
+									</view>
+									<view class="tui-pro-pay">{{ item.payNum }}人付款</view>
+								</view>
+							</view>
+						</view>
+						<!--商品列表-->
+					</block>
+				</view>
+			</view>
+
+			<!--list-->
+		</view>
+		<!--=======商品 end=======-->
+
+		<!--=======活动 start=======-->
+		<view class="tui-items__3 tui-padding" wx:if="{{current == 2}}">
+			<view class="tui-activity__box">
+				<view class="tui-activity__title">今日超值</view>
+				<view class="tui-activity__item" bindtap="detail" wx:for="{{12}}" wx:key="index">
+					<image src="/static/images/product/{{index % 2 == 0 ? 4 : 3}}.jpg"></image>
+					<view class="tui-activity__right">
+						<view class="tui-ag__title">水星家纺 豪华大床四件套豪华大床四件套豪华大床四件套</view>
+						<view class="tui-flex tui-ag__tag"><tui-tag plain type="danger" padding="8rpx 12rpx" size="24rpx" margin="0 8rpx 0 0">优惠促销</tui-tag></view>
+						<view class="tui-ag__bottom">
+							<view class="tui-flex">
+								<view class="tui-ag__discount">
+									￥
+									<text>4.5</text>
+								</view>
+								<view class="tui-ag__original">￥10</view>
+							</view>
+							<view class="tui-ag__btn">
+								<view>已低至4.5折</view>
+								<view class="tui-btn__text">立即抢购</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!--=======活动 end=======-->
+
+		<!--=======新品 start=======-->
+		<view class="tui-items__4" wx:if="{{current == 3}}">
+			<tui-divider gradual width="60%">08月20日本店上新</tui-divider>
+			<!--list-->
+			<view class="tui-product-list tui-padding tui-ptop__0">
+				<view class="tui-product-container">
+					<block wx:for="{{productList}}" wx:key="index" wx:if="{{(index + 1) % 2 != 0}}">
+						<!--商品列表-->
+						<view class="tui-pro-item" hover-class="tui-hover" hover-start-time="150" bindtap="detail">
+							<image src="/static/images/mall/product/{{item.img}}.jpg" class="tui-pro-img" mode="widthFix" />
+							<view class="tui-pro-content">
+								<view class="tui-pro-tit">{{ item.name }}</view>
+								<view>
+									<view class="tui-pro-price">
+										<text class="tui-sale-price">￥{{ item.sale }}</text>
+										<text class="tui-factory-price">￥{{ item.factory }}</text>
+									</view>
+									<view class="tui-pro-pay">{{ item.payNum }}人付款</view>
+								</view>
+							</view>
+						</view>
+						<!--商品列表-->
+					</block>
+				</view>
+				<view class="tui-product-container">
+					<block wx:for="{{productList}}" wx:key="index" wx:if="{{(index + 1) % 2 == 0}}">
+						<!--商品列表-->
+						<view class="tui-pro-item" hover-class="tui-hover" hover-start-time="150" bindtap="detail">
+							<image src="/static/images/mall/product/{{item.img}}.jpg" class="tui-pro-img" mode="widthFix" />
+							<view class="tui-pro-content">
+								<view class="tui-pro-tit">{{ item.name }}</view>
+								<view>
+									<view class="tui-pro-price">
+										<text class="tui-sale-price">￥{{ item.sale }}</text>
+										<text class="tui-factory-price">￥{{ item.factory }}</text>
+									</view>
+									<view class="tui-pro-pay">{{ item.payNum }}人付款</view>
+								</view>
+							</view>
+						</view>
+						<!--商品列表-->
+					</block>
+				</view>
+			</view>
+
+			<!--list-->
+		</view>
+		<!--=======新品 end=======-->
+
+		<!--=======分类 start=======-->
+		<view class="tui-items__5 tui-padding" wx:if="{{current == 4}}">
+			<view class="tui-classify-box" bindtap="product">
+				<tui-list-cell padding="30rpx" hover="{{false}}" arrow unlined><view class="tui-classify__main">加菲猫</view></tui-list-cell>
+				<view class="tui-classify__sub">
+					<view class="tui-classify__item">加菲猫1号</view>
+					<view class="tui-classify__item">加菲猫2号</view>
+					<view class="tui-classify__item">加菲猫3号</view>
+				</view>
+			</view>
+			<view class="tui-classify-box" bindtap="product">
+				<tui-list-cell padding="30rpx" hover="{{false}}" arrow unlined><view class="tui-classify__main">英国短毛猫</view></tui-list-cell>
+			</view>
+			<view class="tui-classify-box" bindtap="product">
+				<tui-list-cell padding="30rpx" hover="{{false}}" arrow unlined><view class="tui-classify__main">德文</view></tui-list-cell>
+			</view>
+			<view class="tui-classify-box" bindtap="product" wx:for="{{3}}" wx:key="index">
+				<tui-list-cell padding="30rpx" hover="{{false}}" arrow unlined><view class="tui-classify__main">矮脚猫</view></tui-list-cell>
+				<view class="tui-classify__sub">
+					<view class="tui-classify__item">矮脚猫1号</view>
+					<view class="tui-classify__item">矮脚猫2号</view>
+					<view class="tui-classify__item">矮脚猫3号</view>
+				</view>
+			</view>
+		</view>
+		<!--=======分类 end=======-->
+	</view>

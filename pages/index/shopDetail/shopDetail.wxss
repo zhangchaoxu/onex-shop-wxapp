@@ -1,0 +1,130 @@
+.tui-shop__box {
+  width: 100%;
+  background-color: #18293d;
+  padding: 20rpx 25rpx;
+  box-sizing: border-box;
+}
+
+.tui-common__box {
+  background-color: #FFFFFF;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+  box-shadow: 0 3rpx 20rpx rgba(183, 183, 183, 0.1);
+  overflow: hidden;
+}
+
+.tui-shop__info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+}
+
+.tui-logo {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 6rpx;
+  display: block;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.tui-shop__name {
+  width: 420rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  padding-bottom: 6rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tui-shop__rate {
+  display: flex;
+  align-items: center;
+}
+
+.tui-shop__follow {
+  font-size: 25rpx;
+  transform: scale(0.8);
+  transform-origin: 0 center;
+}
+
+.tui-btn__follow {
+  margin-left: auto;
+}
+
+.tui-follow__text {
+  padding-left: 6rpx;
+}
+
+.tui-score__bg {
+  width: 100%;
+  height: 100rpx;
+  background: linear-gradient(to bottom, #18293d, #fafafa);
+}
+
+.tui-score__box {
+  width: 100%;
+  padding: 10rpx 30rpx 30rpx;
+}
+
+.tui-rate__box {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 0 6rpx;
+  margin-right: 12rpx;
+  background-color: rgba(83, 83, 83, .1);
+  line-height: 13px;
+}
+
+.tui-flex__center {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.tui-flex__center text {
+  font-size: 24rpx;
+  color: #999;
+  padding-right: 50rpx;
+}
+
+.tui-score text {
+  padding-right: 25rpx;
+}
+
+.tui-color__red text {
+  color: #EB0909;
+}
+
+.tui-color__green text {
+  color: #19be6b;
+}
+
+.tui-info__box {
+  width: 100%;
+  padding: 0 25rpx 100rpx;
+  box-sizing: border-box;
+  margin-top: -100rpx;
+}
+
+.tui-top__20 {
+  margin-top: 20rpx;
+}
+
+.tui-flex {
+  display: flex;
+}
+
+.tui-text__shrink {
+  flex-shrink: 0;
+}
+
+.tui-sub__info {
+  color: #999;
+  padding-left: 40rpx;
+  word-break: break-all;
+
+}

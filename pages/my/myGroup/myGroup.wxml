@@ -1,0 +1,44 @@
+<view class="container">
+		<tui-tabs  tabs="{{tabs}}" isFixed currentTab="{{currentTab}}" selectedColor="#E41F19" sliderBgColor="#E41F19" bindchange="change" itemWidth="25%"></tui-tabs>
+
+		<view class="tui-order-list">
+			<view class="tui-order-item" wx:for="{{4}}" wx:for-item="model" wx:for-index="orderIndex" wx:key="orderIndex" bindtap="detail">
+				<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
+					<view class="tui-goods-title">
+						<view wx:if="{{currentTab != 1}}">2020-09-01 03:01 {{ currentTab == 3 ? '已结束' : '已开团' }}</view>
+						<view wx:else class="tui-flex">
+							<text>距离结束剩余</text>
+							<tui-countdown time="{{3800}}" scale colonColor="#EB0909" borderColor="#EB0909" color="#EB0909"></tui-countdown>
+						</view>
+						<view class="tui-order-status">{{ statusArr[currentTab] }}</view>
+					</view>
+				</tui-list-cell>
+				<tui-list-cell padding="0" hover="{{false}}">
+					<view class="tui-goods-item">
+						<image src="/static/images/mall/product/4.jpg" class="tui-goods-img"></image>
+						<view class="tui-goods-center">
+							<view class="tui-goods-name">欧莱雅（LOREAL）奇焕光彩粉嫩透亮修颜霜 30ml（欧莱雅彩妆 BB霜 粉BB 遮瑕疵 隔离）</view>
+							<view class="tui-goods-attr">黑色，50ml</view>
+						</view>
+						<view class="tui-price-right">
+							<view>￥298.00</view>
+							<view>x2</view>
+						</view>
+					</view>
+				</tui-list-cell>
+				<tui-list-cell :hover="false" unlined>
+					<view class="tui-goods-price">
+						<view>共2件商品 合计：</view>
+						<view class="tui-size-24">￥</view>
+						<view class="tui-price-large">596</view>
+						<view class="tui-size-24">.00</view>
+					</view>
+				</tui-list-cell>
+				<view class="tui-order-btn">
+					<tui-button type="danger" plain width="152rpx" height="52rpx" size="26" shape="circle" wx:if="{{currentTab == 1}}">邀请好友</tui-button>
+					<tui-button type="black" plain width="152rpx" height="52rpx" size="26" shape="circle" wx:else>拼团详情</tui-button>
+				</view>
+			</view>
+		</view>
+		<tui-divider width="60%" gradual>没有更多了</tui-divider>
+	</view>

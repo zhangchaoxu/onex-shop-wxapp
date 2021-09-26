@@ -1,0 +1,168 @@
+<view class="container">
+		<view class="tui-goods-item">
+			<image src="/static/images/mall/product/4.jpg" class="tui-goods-img"></image>
+			<view class="tui-goods-center">
+				<view class="tui-goods-name">欧莱雅（LOREAL）奇焕光彩粉嫩透亮修颜霜 30ml（欧莱雅彩妆 BB霜 粉BB 遮瑕疵 隔离）</view>
+				<view class="tui-price__box">
+					<view class="tui-goods-price">
+						<view class="tui-size-24">￥</view>
+						<view class="tui-price-large">118</view>
+						<view class="tui-size-24">.00</view>
+						<text>已拼2020件</text>
+					</view>
+					<view class="tui-price-tag">2人团</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="tui-group__box tui-mtop__20">
+			<tui-divider backgroundColor="#fff" width="70%" gradual wx:if="{{status != 1}}">
+				<view class="tui-divider__content">
+					<image src="{{webURL}}img_invoice_success3x.png" wx:if="{{status == 2}}"></image>
+					<text>{{ status == 2 ? '拼团成功' : '拼团失败' }}</text>
+				</view>
+			</tui-divider>
+			<view class="tui-group__time" wx:if="{{status != 1}}">开团时间：2020-09-01 12:30:10</view>
+			<view class="tui-group__title" wx:if="{{status == 1}}">
+				<text>还差</text>
+				<text class="tui-color__red">1</text>
+				<text>人，赶快邀请好友来拼团吧</text>
+			</view>
+			<view class="tui-group-countdown" wx:if="{{status == 1}}">
+				<view class="tui-countdown-right">剩余</view>
+				<tui-countdown time="{{3800}}" scale colonColor="#EB0909" borderColor="#EB0909" color="#EB0909"></tui-countdown>
+				<view class="tui-countdown-left">结束</view>
+			</view>
+			<view class="tui-user__box">
+				<view class="tui-user__item">
+					<view class="tui-avatar__box tui-size">
+						<image class="tui-size" src="{{webURL}}mine_avatar_3x.jpg"></image>
+						<view class="tui-team__leader">团长</view>
+					</view>
+					<view class="tui-nickname">不许人间见白头</view>
+				</view>
+				<view class="tui-user__item" wx:if="{{status != 2}}">
+					<view class="tui-avatar__box tui-user__none"><image class="tui-size" src="{{webURL}}img_not_tuxedo.png"></image></view>
+					<view class="tui-nickname">暂无</view>
+				</view>
+				<view class="tui-user__item" wx:else>
+					<view class="tui-avatar__box tui-size"><image class="tui-size" src="{{webURL}}mine_avatar_3x.jpg"></image></view>
+					<view class="tui-nickname">小可爱本人</view>
+				</view>
+			</view>
+			<view class="tui-btn__box">
+				<tui-button type="danger" height="88rpx" shadow shape="circle">{{ status == 1 ? '邀请好友拼团' : '查看更多拼团商品' }}</tui-button>
+			</view>
+		</view>
+		<!--拼团规则玩法介绍-->
+		<view class="tui-group-rule tui-mtop__20" wx:if="{{status == 1}}">
+			<tui-list-cell padding="30rpx" hover="{{false}}">
+				<view class="tui-group__text tui-group__start tui-between">
+					<view class="tui-group-title">开团时间</view>
+					<view class="tui-sub__info">2020-09-01 12:30:01</view>
+				</view>
+			</tui-list-cell>
+			<tui-list-cell padding="30rpx" arrow bindclick="showModal">
+				<view class="tui-group__text tui-between">
+					<view class="tui-group-title">拼团规则</view>
+					<view class="tui-sub__info">拼团玩法介绍</view>
+				</view>
+			</tui-list-cell>
+			<view class="tui-step__box">
+				<view class="tui-step-item">
+					<image src="{{webURL}}img_opengroup_3x.png"></image>
+					<view class="tui-step-text">团长开团</view>
+				</view>
+				<view class="tui-step-arrow"><image src="{{webURL}}img_arrow_3x.png"></image></view>
+				<view class="tui-step-item">
+					<image src="{{webURL}}img_invitefriends_3x.png"></image>
+					<view class="tui-step-text">邀请好友</view>
+				</view>
+				<view class="tui-step-arrow"><image src="{{webURL}}img_arrow_3x.png"></image></view>
+				<view class="tui-step-item">
+					<image src="{{webURL}}img_spellgroupsuccess_3x.png"></image>
+					<view class="tui-step-text">拼团成功</view>
+				</view>
+				<view class="tui-step-arrow"><image src="{{webURL}}img_arrow_3x.png"></image></view>
+				<view class="tui-step-item">
+					<image src="{{webURL}}img_tosend_3x.png"></image>
+					<view class="tui-step-text">等待发货</view>
+				</view>
+			</view>
+		</view>
+
+		<!--热销爆款-->
+		<tui-divider width="50%" gradual><text class="tui-hot__title">热销爆品</text></tui-divider>
+
+		<!--=======商品=======-->
+		<view class="tui-product__box">
+			<view class="tui-product-list">
+				<view class="tui-product-container">
+					<block wx:for="{{productList}}" wx:key="index" wx:if="{{(index + 1) % 2 != 0}}">
+						<!--商品列表-->
+						<view class="tui-pro-item {{isList ? 'tui-flex-list' : ''}}" hover-class="tui-hover" hover-start-time="150" bindtap="detail">
+							<image src="/static/images/mall/product/{{item.img}}.jpg" class="tui-pro-img {{isList ? 'tui-proimg-list' : ''}}"mode="widthFix" />
+							<view class="tui-pro-content">
+								<view class="tui-pro-tit">{{ item.name }}</view>
+								<view>
+									<view class="tui-price__box">
+										<view class="tui-price">
+											<view class="tui-price__small">￥</view>
+											<view class="tui-price__large">{{ item.sale }}</view>
+											<view class="tui-price__small">.00</view>
+										</view>
+										<view class="tui-price__original">￥{{ item.factory }}.00</view>
+									</view>
+									<view class="tui-group-text">已有{{ item.payNum }}人拼团</view>
+									<view class="tui-group-btn">
+										<view class="tui-flex-btn tui-color-red">2人团</view>
+										<view class="tui-flex-btn">去拼团</view>
+									</view>
+								</view>
+							</view>
+						</view>
+						<!--商品列表-->
+					</block>
+				</view>
+				<view class="tui-product-container">
+					<block wx:for="{{productList}}" wx:key="index" wx:if="{{(index + 1) % 2 == 0}}">
+						<!--商品列表-->
+						<view class="tui-pro-item {{isList ? 'tui-flex-list' : ''}}" hover-class="tui-hover" hover-start-time="150" bindtap="detail">
+							<image src="/static/images/mall/product/{{item.img}}.jpg" class="tui-pro-img {{isList ? 'tui-proimg-list' : ''}}" mode="widthFix" />
+							<view class="tui-pro-content">
+								<view class="tui-pro-tit">{{ item.name }}</view>
+								<view>
+									<view class="tui-price__box">
+										<view class="tui-price">
+											<view class="tui-price__small">￥</view>
+											<view class="tui-price__large">{{ item.sale }}</view>
+											<view class="tui-price__small">.00</view>
+										</view>
+										<view class="tui-price__original">￥{{ item.factory }}.00</view>
+									</view>
+									<view class="tui-group-text">已有{{ item.payNum }}人拼团</view>
+									<view class="tui-group-btn">
+										<view class="tui-flex-btn tui-color-red">2人团</view>
+										<view class="tui-flex-btn">去拼团</view>
+									</view>
+								</view>
+							</view>
+						</view>
+						<!--商品列表-->
+					</block>
+				</view>
+			</view>
+		</view>
+		<!--=======商品 end=======-->
+
+		<!--拼团玩法介绍-->
+		<tui-modal show="{{modal}}" shape="circle" padding="30rpx 40rpx" custom>
+			<view class="tui-modal__title">拼团玩法</view>
+			<view class="tui-modal__p">1.全民拼团，所有用户都可直接参团或开团；</view>
+			<view class="tui-modal__p">2.拼团成功，指开团在规定时间内达到规定成团人数；</view>
+			<view class="tui-modal__p">3.拼团失败，指开团后在规定时间内未能找到相应的人数的好友参团，该团失败，系统取消该团订单，退款原路退回。</view>
+			<view class="tui-modal__btn">
+       <tui-button type="danger" shape="circle" width="280rpx" height="68rpx" :size="26" bindclick="hideModal">我知道了</tui-button>
+      </view>
+		</tui-modal>
+	</view>

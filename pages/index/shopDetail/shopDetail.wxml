@@ -1,0 +1,93 @@
+<view class="container">
+		<view class="tui-shop__box">
+			<view class="tui-shop__info tui-common__box">
+				<image src="/static/images/index/logo.png" class="tui-logo"></image>
+				<view class="tui-shop__desc">
+					<view class="tui-shop__name">
+						ThorUI宠物生活专营店
+					</view>
+					<view class="tui-shop__rate">
+						<view class="tui-shop__follow">2.3万人关注</view>
+					</view>
+				</view>
+				<view class="tui-btn__follow">
+					<tui-button size="{{24}}" width="116rpx" height="48rpx" shape="circle" type="danger">
+						<tui-icon name="like" color="#fff" size="{{24}}" unit="rpx"></tui-icon>
+						<text class="tui-follow__text">关注</text>
+					</tui-button>
+					<!-- <tui-button size="{{24}}" width="116rpx" height="48rpx" shape="circle" type="white" disabled>已关注</tui-button> -->
+				</view>
+			</view>
+		</view>
+		<view class="tui-score__bg"></view>
+		<view class="tui-info__box">
+			<view class="tui-score__box tui-common__box">
+				<view class="tui-flex__center">
+					<text>店铺星级</text>
+					<view class="tui-rate__box">
+						<tui-rate current="{{5}}" score="{{0.6}}" disabled size="{{12}}"></tui-rate>
+					</view>
+				</view>
+				<view class="tui-flex__center">
+					<text>用户评价</text>
+					<view class="tui-score tui-color__red">
+						<text>9.90分</text>
+						<text>高</text>
+					</view>
+				</view>
+				<view class="tui-flex__center">
+					<text>物流履约</text>
+					<view class="tui-score tui-color__red">
+						<text>9.99分</text>
+						<text>高</text>
+					</view>
+				</view>
+				<view class="tui-flex__center">
+					<text>售后服务</text>
+					<view class="tui-score tui-color__green">
+						<text>8.95分</text>
+						<text>低</text>
+					</view>
+				</view>
+			</view>
+			<view class="tui-common__box tui-top__20">
+				<tui-list-cell arrow>证照信息</tui-list-cell>
+				<tui-list-cell arrow unlined bindclick="qrcode">店铺二维码</tui-list-cell>
+			</view>
+			<view class="tui-common__box tui-top__20">
+				<tui-list-cell hover="{{false}}">
+					<view class="tui-flex">
+						<text class="tui-text__shrink">店铺简介</text>
+						<text class="tui-sub__info">专业繁育宠物猫15年！</text>
+					</view>
+				</tui-list-cell>
+				<tui-list-cell hover="{{false}}">
+					<view class="tui-flex">
+						<text class="tui-text__shrink">所在地区</text>
+						<text class="tui-sub__info">上海浦东新区</text>
+					</view>
+				</tui-list-cell>
+				<tui-list-cell hover="{{false}}" unlined>
+					<view class="tui-flex">
+						<text class="tui-text__shrink">开店时间</text>
+						<text class="tui-sub__info">2006-08-20</text>
+					</view>
+				</tui-list-cell>
+			</view>
+
+			<view class="tui-common__box tui-top__20">
+				<tui-list-cell hover="{{false}}" unlined>
+					<view class="tui-flex">
+						<text class="tui-text__shrink">销售品牌</text>
+						<text class="tui-sub__info">VAKADA</text>
+					</view>
+				</tui-list-cell>
+			</view>
+			<view class="tui-common__box tui-top__20" bindtap="product">
+				<tui-list-cell color="#EB0909" unlined arrow>
+					去看看全部商品
+				</tui-list-cell>
+			</view>
+		</view>
+		<tui-scroll-top isShare bottom="0" customShare="{{customShare}}"></tui-scroll-top>
+	</view>

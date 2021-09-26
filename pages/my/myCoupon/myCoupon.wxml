@@ -1,0 +1,64 @@
+<view class="container">
+		<tui-tabs tabs="{{tabs}}" currentTab="{{currentTab}}" selectedColor="#E41F19" sliderBgColor="#E41F19" bindchange="change" itemWidth="33.33333%" isFixed="{{scrollTop>=0}}"></tui-tabs>
+		<view class="tui-coupon-list {{scrollTop>=0?'tui-mtop':''}}">
+			<view wx:for="{{couponList}}" wx:for-index="i" wx:key="i" hidden="{{currentTab!=i}}">
+				<view class="tui-coupon-item tui-top20" wx:for="{{item.data}}" wx:for-item="coupon" wx:for-index="j" wx:key="j">
+					<image src="{{webURL}}/static/images/mall/coupon/bg_coupon_3x.png" class="tui-coupon-bg" mode="widthFix"></image>
+					<image src="{{webURL+parse.getSignUrl(i)}}" class="tui-coupon-sign" wx:if="{{i>0}}"></image>
+					<view class="tui-coupon-item-left">
+						<view class="tui-coupon-price-box {{i>0?'tui-color-grey':''}}">
+							<view class="tui-coupon-price-sign" wx:if="{{coupon.type==2}}">￥</view>
+							<!--tui-price-small 面值>4位数的时候为true-->
+							<view class="tui-coupon-price {{parse.getClass(coupon.value)}}" >{{coupon.value}}</view>
+							<view class="tui-coupon-price-sign" wx:if="{{coupon.type==1}}">折</view>
+						</view>
+						<view class="tui-coupon-intro">{{coupon.condition}}</view>
+					</view>
+					<view class="tui-coupon-item-right">
+						<view class="tui-coupon-content">
+							<view class="tui-coupon-title-box">
+								<view class="tui-coupon-btn {{i>0?'tui-bg-grey':''}}" >{{coupon.range}}</view>
+								<view class="tui-coupon-title">{{coupon.rangeDesc}}</view>
+							</view>
+							<view class="tui-coupon-rule">
+								<view class="tui-rule-box tui-padding-btm">
+									<view class="tui-coupon-circle"></view>
+									<view class="tui-coupon-text">不可叠加使用</view>
+								</view>
+								<view class="tui-rule-box">
+									<view class="tui-coupon-circle"></view>
+									<view class="tui-coupon-text">{{j%2==0?"自领取之日起30天有效":"2019-11-01至2019-12-31"}}</view>
+								</view>
+							</view>
+						</view>
+					</view>
+					<view class="tui-btn-box" wx:if="{{i===0}}">
+						<tui-button type="danger" width="152rpx" height="52rpx" size="24" shape="circle" plain>立即使用</tui-button>
+					</view>
+				</view>
+
+				<!--加载loading-->
+				<tui-loadmore wx:if="{{couponList[i].loading}}" index="3" type="red"></tui-loadmore>
+				<tui-nomore wx:if="{{!couponList[i].pullUpOn}}"></tui-nomore>
+				<!--加载loading-->
+			</view>
+		</view>
+
+	</view>
+
+  <wxs module="parse">
+    module.exports={
+      getSignUrl: function(index) {
+        var url = "";
+        if (index == 1) {
+          url = "/static/images/mall/coupon/img_coupon_beused_3x.png"
+        } else if (index == 2) {
+          url = "/static/images/mall/coupon/img_coupon_failure_3x.png"
+        }
+        return url
+      },
+      getClass:function(val){
+         return val.toString().length>4?'tui-price-small':''
+      }
+    }
+  </wxs>

@@ -1,0 +1,11 @@
+<view class="container">
+		<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
+			<view class="tui-cell-input">
+				<input value="{{nickname}}" placeholder="请输入昵称" placeholder-class="tui-phcolor" type="text" auto-focus focus maxlength="40" bindinput="inputNickname" />
+			   <icon type="clear" size="14" color="#bfbfbf" hidden="{{!nickname}}" bindtap="clearInput"></icon>
+			</view>
+		</tui-list-cell>
+		<view class="tui-btn-box">
+			<tui-button shadow height="88rpx" shape="circle" type="danger">确定</tui-button>
+		</view>
+	</view>

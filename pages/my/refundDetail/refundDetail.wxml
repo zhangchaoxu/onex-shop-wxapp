@@ -1,0 +1,80 @@
+<view class="container">
+		<view class="tui-order-header">
+			<view class="tui-header-content">
+				<view>
+					<view class="tui-status-text">退款成功</view>
+					<view class="tui-reason"><text class="tui-reason-text">退款原路退回 2020-09-02 08:20:19</text></view>
+				</view>
+				<!-- img_refundfailure.png -->
+				<image src="https://thorui.cn/images/mall/group/img_success3x.png" class="tui-status-img" mode="widthFix"></image>
+			</view>
+		</view>
+		<tui-list-cell hover="{{false}}" unlined>
+			<view class="tui-title">
+				<text>退款金额</text>
+				<text>￥596.00</text>
+			</view>
+		</tui-list-cell>
+		<view class="tui-order-item">
+			<tui-list-cell hover="{{false}}" lineLeft="{{false}}"><view class="tui-order-title">订单信息</view></tui-list-cell>
+			<block wx:for="{{2}}" wx:key="index">
+				<tui-list-cell padding="0">
+					<view class="tui-goods-item">
+						<image src="/static/images/mall/product/{{index + 3}}.jpg" class="tui-goods-img"></image>
+						<view class="tui-goods-center">
+							<view class="tui-goods-name">欧莱雅（LOREAL）奇焕光彩粉嫩透亮修颜霜 30ml（欧莱雅彩妆 BB霜 粉BB 遮瑕疵 隔离）</view>
+							<view class="tui-goods-attr">黑色，50ml</view>
+						</view>
+						<view class="tui-price-right">
+							<view>￥298.00</view>
+							<view>x2</view>
+						</view>
+					</view>
+				</tui-list-cell>
+			</block>
+		</view>
+		<view class="tui-order-info">
+			<view class="tui-order-content">
+				<view class="tui-order-flex">
+					<view class="tui-item-title">售后类型：</view>
+					<view class="tui-item-content">退货退款</view>
+				</view>
+				<view class="tui-order-flex">
+					<view class="tui-item-title">付款方式：</view>
+					<view class="tui-item-content">余额</view>
+				</view>
+				<view class="tui-order-flex">
+					<view class="tui-item-title">商品数量：</view>
+					<view class="tui-item-content">4</view>
+				</view>
+				<view class="tui-order-flex">
+					<view class="tui-item-title">退款编号：</view>
+					<view class="tui-item-content">322090091111922</view>
+				</view>
+				<view class="tui-order-flex">
+					<view class="tui-item-title">退款原因：</view>
+					<view class="tui-item-content">买错了</view>
+				</view>
+				<view class="tui-order-flex">
+					<view class="tui-item-title">订单编号：</view>
+					<view class="tui-item-content">329900923328874</view>
+				</view>
+				<view class="tui-order-flex">
+					<view class="tui-item-title">申请时间：</view>
+					<view class="tui-item-content">2020-09-01 20:30:19</view>
+				</view>
+				<view class="tui-order-flex">
+					<view class="tui-item-title">申请说明:</view>
+					<view class="tui-item-content">重新购买</view>
+				</view>
+			</view>
+			<tui-list-view unlined="bottom">
+				<tui-list-cell unlined>
+					<view class="tui-contact">
+						<image src="https://thorui.cn/images/mall/group/icon_order_contactmerchant.png"></image>
+						<text>联系商家</text>
+					</view>
+				</tui-list-cell>
+			</tui-list-view>
+		</view>
+	</view>
